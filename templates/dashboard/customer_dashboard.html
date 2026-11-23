@@ -4,8 +4,29 @@
 <div class="container wide">
   <h2>Customer Dashboard</h2>
   <p>Welcome, {{ user.first_name|default:user.username }}.</p>
-  <ul>
-    <li><a href="{% url 'profile' %}">My Profile</a></li>
-  </ul>
+  <p><strong>{{ storage_count }}</strong> storage(s) &middot; <strong>{{ item_count }}</strong> item(s)</p>
+
+  <div class="row">
+    <h3>Your storages</h3>
+    <a class="btn" href="{% url 'storage_create' %}">+ New Storage</a>
+  </div>
+  {% for s in recent_storages %}
+    <p><a href="{% url 'storage_detail' s.pk %}">{{ s.name }}</a></p>
+  {% empty %}
+    <p class="empty">No storage yet.</p>
+  {% endfor %}
+  <p><a href="{% url 'storage_list' %}">View all storages</a></p>
+
+  <h3>Expiring within 7 days</h3>
+  {% for item in expiring_items %}
+    <p>
+      {{ item.name }} in {{ item.storage.name }} &mdash; {{ item.expiry_date|date:"M d, Y" }}
+      {% if item.is_expired %}<span class="badge expired">Expired</span>{% endif %}
+    </p>
+  {% empty %}
+    <p>Nothing is expiring soon.</p>
+  {% endfor %}
+
+  <p><a href="{% url 'profile' %}">My Profile</a></p>
 </div>
 {% endblock %}
