@@ -36,3 +36,6 @@ Django (templates), PostgreSQL on Supabase, Python <version>
 
 ## Git workflow
 main (stable) <- develop (integration) <- feature/<name> branches, merged by pull request.
+
+## Documentation Link
+https://docs.google.com/document/d/1lclBgEKXCdZsO3qSZCGaT2v8dj5rM4dy/edit#heading=h.og8zj9kdiytp
