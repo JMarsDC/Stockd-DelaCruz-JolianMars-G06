@@ -110,7 +110,7 @@ def item_delete(request, pk):
     return render(request, "inventory/item_confirm_delete.html", {"item": item})
 
 
-    @role_required("admin")
+@role_required("admin")
 def all_storages(request):
     storages = Storage.objects.select_related("owner").annotate(item_count=Count("items"))
     return render(request, "inventory/all_storages.html", {"storages": storages})
