@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from accounts.decorators import role_required
 
-from .forms import StorageForm
-from .models import Storage
+from .forms import StorageForm, ItemForm
+from .models import Storage, Item
 
 ALL_ROLES = ("admin", "customer")
 
