@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Delete Storage{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>Delete storage?</h2>
+  <p>Delete <strong>{{ storage.name }}</strong>? All items inside it will be deleted too. This cannot be undone.</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn danger" type="submit">Yes, delete</button>
+    <a href="{% url 'storage_detail' storage.pk %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}
