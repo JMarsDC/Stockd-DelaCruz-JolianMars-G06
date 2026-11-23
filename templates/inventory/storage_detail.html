@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ storage.name }}{% endblock %}
+{% block content %}
+<div class="container wide">
+  <div class="row">
+    <h2>{{ storage.name }}</h2>
+    {% if is_owner %}
+      <span>
+        <a class="btn" href="{% url 'storage_edit' storage.pk %}">Edit</a>
+        <a class="btn danger" href="{% url 'storage_delete' storage.pk %}">Delete</a>
+      </span>
+    {% endif %}
+  </div>
+  <p>{{ storage.get_storage_type_display }} &middot; Owner: {{ storage.owner.username }}</p>
+  <p>{{ storage.description|default:"No description." }}</p>
+  <a href="{% url 'storage_list' %}">&larr; Back to storages</a>
+</div>
+{% endblock %}
