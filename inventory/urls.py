@@ -8,4 +8,7 @@ urlpatterns = [
     path("<int:pk>/", views.storage_detail, name="storage_detail"),
     path("<int:pk>/edit/", views.storage_edit, name="storage_edit"),
     path("<int:pk>/delete/", views.storage_delete, name="storage_delete"),
+    path("<int:storage_pk>/items/add/", views.item_add, name="item_add"),
+    path("items/<int:pk>/edit/", views.item_edit, name="item_edit"),
+    path("items/<int:pk>/delete/", views.item_delete, name="item_delete"),
 ]
