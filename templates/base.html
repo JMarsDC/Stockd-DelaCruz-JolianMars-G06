@@ -35,6 +35,9 @@
     <strong style="color:#fff">Stockd</strong>
     {% if user.is_authenticated %}
       <a href="{% url 'dashboard' %}">Dashboard</a>
+      {% if user.role == 'admin' %}
+        <a href="{% url 'all_storages' %}">All Storages</a>
+      {% endif %}
       <a href="{% url 'storage_list' %}">Storages</a>
       <a href="{% url 'profile' %}">Profile</a>
       <span class="spacer"></span>
