@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}All Storages{% endblock %}
+{% block content %}
+<div class="container wide">
+  <h2>All Storages</h2>
+  <p>Read-only list of every user's storages.</p>
+  {% if storages %}
+    <table>
+      <thead><tr><th>Storage</th><th>Owner</th><th>Type</th><th>Items</th></tr></thead>
+      <tbody>
+      {% for s in storages %}
+        <tr>
+          <td><a href="{% url 'storage_detail' s.pk %}">{{ s.name }}</a></td>
+          <td>{{ s.owner.username }}</td>
+          <td>{{ s.get_storage_type_display }}</td>
+          <td>{{ s.item_count }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="empty">No storages have been created yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

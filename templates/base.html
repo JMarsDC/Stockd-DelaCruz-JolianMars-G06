@@ -19,6 +19,15 @@
     .btn { padding: 10px 16px; background: #0984e3; color: #fff; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
     .errorlist { color: #c0392b; list-style: none; padding: 0; margin: 0; }
     .helptext { font-size: 12px; color: #666; }
+    .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; }
+    .actions a { margin-right: 12px; }
+    .btn.danger { background: #d63031; }
+    .empty { padding: 24px; text-align: center; color: #666; background: #f5f6fa; border-radius: 6px; }
+    .badge { padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+    .badge.expired { background: #f8d7da; color: #721c24; }
+    .badge.soon { background: #fff3cd; color: #856404; }
   </style>
 </head>
 <body>
@@ -26,6 +35,10 @@
     <strong style="color:#fff">Stockd</strong>
     {% if user.is_authenticated %}
       <a href="{% url 'dashboard' %}">Dashboard</a>
+      {% if user.role == 'admin' %}
+        <a href="{% url 'all_storages' %}">All Storages</a>
+      {% endif %}
+      <a href="{% url 'storage_list' %}">Storages</a>
       <a href="{% url 'profile' %}">Profile</a>
       <span class="spacer"></span>
       <span style="color:#fff">{{ user.username }} ({{ user.role }})</span>

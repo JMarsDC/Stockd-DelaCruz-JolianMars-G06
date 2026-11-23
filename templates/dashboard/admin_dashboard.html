@@ -4,9 +4,17 @@
 <div class="container wide">
   <h2>Admin Dashboard</h2>
   <p>Welcome, {{ user.first_name|default:user.username }}.</p>
+  <table>
+    <tr><th>Users</th><td>{{ total_users }}</td></tr>
+    <tr><th>Storages (all users)</th><td>{{ total_storages }}</td></tr>
+    <tr><th>Items (all users)</th><td>{{ total_items }}</td></tr>
+    <tr><th>Your own storages</th><td>{{ my_storage_count }}</td></tr>
+  </table>
   <ul>
+    <li><a href="{% url 'all_storages' %}">View all storages</a></li>
+    <li><a href="{% url 'storage_list' %}">My storages</a></li>
     <li><a href="{% url 'profile' %}">My Profile</a></li>
-    <li><a href="/django-admin/">Manage Users (Django Admin)</a></li>
+    <li><a href="/django-admin/">Django admin</a></li>
   </ul>
 </div>
 {% endblock %}

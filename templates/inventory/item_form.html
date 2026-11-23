@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ mode }} Item{% endblock %}
+{% block content %}
+<div class="container">
+  <h2>{{ mode }} Item</h2>
+  <p>Storage: <strong>{{ storage.name }}</strong></p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn" type="submit">Save</button>
+    <a href="{% url 'storage_detail' storage.pk %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}
